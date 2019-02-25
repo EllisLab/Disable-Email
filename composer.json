@@ -1,0 +1,9 @@
+{
+    "require": {},
+    "config": {
+        "vendor-dir": "disable_email/vendor"
+    },
+    "require-dev": {
+        "jakub-onderka/php-parallel-lint": "^1.0"
+    }
+}

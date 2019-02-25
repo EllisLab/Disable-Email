@@ -1,0 +1,29 @@
+language: php
+
+php:
+  - 5.6
+  - 7.0
+  - 7.1
+  - 7.3
+
+install:
+  - composer install
+
+script:
+  - disable_email/vendor/bin/parallel-lint --exclude disable_email/vendor .
+
+before_deploy:
+  - rm -rf disable_email/vendor
+  - zip -r 'Disable-Email' disable_email
+
+deploy:
+  provider: releases
+  api_key:
+    secure: Dwi/eePqJBChdDt1uv5TFtP7JbbwkBbUSm+wNIe4CL7NZiL9MMfhFoa6oe0OH8r9heyhD8LsNOHaCAMhAP6Wn6LC6PJbyanZgEoX3neyD868I2eKzsl7BZtRcQt/JmwK8RmXp4uC5WDMfCTSoKivt8Fy4KPHAbb6fMmYCjL5nEbJcqR4laFvIrx+AGQ3mul4De4MjHRjgrV8euJpZfobW3/vDKJ82rXIA1ShpzXumxga+9PIfv6VAeh96t76gDJD3dxMWVM27rzqKdSz2q5XEPkwjRCYtfzkpk8LLR/makL5+4c5Cp2vokaqTAu5G0uVN8YCdyOGzhiP0hG/eLPzUh0KYNVq+Mauaiewn2gwETAAc1DUjpLQirBEuyiDKwCcaZg1IEKIJBu7S7xIstyfAliIKCf5zDjmMpGKD8SDKznW3275wheA3ONcb8L67JylPQzYXtbXbjTLzndwcmUdxe13M+4rvJWmxLCVeTq3ztesroZWls/hWDPoNf+lCOQmWzMqHZsdV1Ij6BGNl6RkGZEpdqcK1ACiFayTDy1VTnb945olo2m2TlsBw1VaJSNd+0Fatv27aDIWsNWNSvBuwRe6eXS2Vt14TYrYghiJ0MTVbUFg6xrV/z5OfN7jIYiOrMxnXFYzgqb19/oIMw3uMccuSqnCw7V4bNxQ90iYJm0=
+  file: "Disable-Email.zip"
+  skip_cleanup: true
+  on:
+    php: 7.3
+    tags: true
+    condition: $TRAVIS_PULL_REQUEST = false
+    repo: EllisLab/Disable-Email
