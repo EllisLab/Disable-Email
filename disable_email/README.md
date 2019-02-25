@@ -1,6 +1,6 @@
 # Disable Email 📫📪
 
-This add-on disabled outgoing email for your ExpressionEngine website, except for a domain that you approve. This allows you to work on a membership-based site with live data on a local development or staging server, without fear of errant email notifications being sent to members.
+This add-on disables outgoing email for your ExpressionEngine website, except for a domain that you approve. This allows you to work on a membership-based site with live data on a local development or staging server, without fear of errant email notifications being sent to members.
 
 ## Requirements
 
